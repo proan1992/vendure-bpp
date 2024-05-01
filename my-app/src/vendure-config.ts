@@ -11,6 +11,7 @@ import { BecknVendurePlugin } from "./plugins/beckn-vendure-plugin/"; // Import 
 import { ReviewsPlugin } from './plugins/reviews/reviews-plugin'; // Import the ReviewsPlugin
 import 'dotenv/config';
 import path from 'path';
+import { podPaymentMethodHandler } from './pod-payment-handler';
 
 const IS_DEV = process.env.APP_ENV === 'dev';
 
@@ -48,7 +49,7 @@ export const config: VendureConfig = {
         database: path.join(__dirname, '../vendure.sqlite'),
     },
     paymentOptions: {
-        paymentMethodHandlers: [dummyPaymentHandler],
+        paymentMethodHandlers: [podPaymentMethodHandler],
     },
     customFields: {},
     plugins: [
