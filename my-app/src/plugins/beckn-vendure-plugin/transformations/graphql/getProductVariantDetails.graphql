@@ -1,0 +1,41 @@
+query GetProductVariantDetails($productVariantIds: [String!]) {
+    getProductVariantDetails(options: { filter: { id: { in: $productVariantIds } } }) {
+        items {
+            channels {
+                code
+                token
+                id
+                seller {
+                    id
+                    createdAt
+                    updatedAt
+                    name
+                    customFields {
+                        shortDescription
+                        longDescription
+                    }
+                }
+            }
+            id
+            name
+            options {
+                translations {
+                    name
+                }
+                group {
+                    name
+                    code
+                }
+                name
+                code
+            }
+            product {
+                id
+                customFields {
+                    reviewRating
+                    reviewCount
+                }
+            }
+        }
+    }
+}

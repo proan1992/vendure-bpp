@@ -1,0 +1,191 @@
+(
+    $formatMoney := function($value){
+        $string($formatNumber($value/100,"#0.00"))
+    };
+    $formatPrice := function($price,$currencyCode){
+        {
+            "currency":$currencyCode,
+            "value":$formatMoney($price)
+        }
+    };
+    $context := becknRequest.body.context;
+    $message := becknRequest.body.message;
+    $env := env;
+    $order := becknOrder;
+    $items := $order.lines;
+    $customer := $order.customer;
+    $billing := $order.billingAddress;
+    $paymentDetails:= $order.customFields;
+    $shippingAddress := $order.shippingAddress;    
+    $currentChannel:= currentSellerResponse.body.data.activeChannel;
+    $currentSeller:= $currentChannel.seller;
+    {
+        "headers":{
+            "Content-Type": "application/json"
+        },
+        "body":{    
+            "context":becknResponseContext,
+            "message": {
+                "order": {
+                    "id": getBecknOrderInput.becknOrderId,
+"provider":{
+                        "id": $currentChannel.token,
+                        "descriptor": {
+                            "name": $currentSeller.name,
+                            "short_desc": $currentSeller.customFields.shortDescription ? $currentSeller.customFields.shortDescription : "",
+                            "long_desc": $currentSeller.customFields.longDescription ? $currentSeller.customFields.longDescription : "",
+                            "images":$currentSeller.customFields.images[].{
+                                "url":$.source
+                            }
+                        },
+                        "tags":[
+                            {
+                                "display":true,
+                                "descriptor":{
+                                    "name":"Additional Details",
+                                    "code":"additional_details",
+                                    "short_desc": "Additional details about seller"
+                                },
+                                "list":[
+                                    $currentSeller.customFields.address ? {
+                                        "descriptor":{
+                                            "name": "Address",
+                                            "code": "address",
+                                            "short_desc": "Address of Seller"
+                                        },
+                                        "display":true,
+                                        "value": $currentSeller.customFields.address
+                                    }
+                                    ,
+                                    $currentSeller.customFields.taxId ? {
+                                        "descriptor":{
+                                            "name": "Tax ID",
+                                            "code": "tax_id",
+                                            "short_desc": "Tax identifier of Seller"
+                                        },
+                                        "display":true,
+                                        "value": $currentSeller.customFields.taxId
+                                    }
+                                ]
+                            }
+                        ]
+                    },                    
+                    "items": $items[].{
+                        "id":$.productVariant.id,
+                        "descriptor":{
+                            "name":$.productVariant.name
+                        },
+                        "price":(
+                            $price := $formatMoney($.unitPrice);
+                            {
+                            "listed_value": $price,
+                            "currency": $order.currencyCode,
+                            "value": $price
+                        }),
+                        "quantity":{
+                            "selected":{
+                                "count": $.quantity
+                            }
+                        }
+                    },
+                    "fulfillments": $order.shippingLines[].{
+                        "type": $.shippingMethod.code,
+                        "stops":[
+                            {
+                                "location":{
+                                    "address": $shippingAddress.streetLine1 & ' ' & ($shippingAddress.streetLine2 ? $shippingAddress.streetLine2 : ''),
+                                    "city":{
+                                        "name": $shippingAddress.city
+                                    },
+                                    "state":{
+                                        "name": $shippingAddress.province
+                                    },
+                                    "country":{
+                                        "code": $shippingAddress.countryCode
+                                    },
+                                    "area_code": $shippingAddress.postalCode
+                                },
+                                "contact":{
+                                    "phone": $shippingAddress.phoneNumber,
+                                    "email": $customer.emailAddress
+                                }
+                            }
+                        ],
+                        "customer": {
+                            "person": {
+                                "name": $customer.firstName & ' ' & $customer.lastName
+                            },
+                            "contact": {
+                                "phone": $customer.phoneNumber
+                            }
+                        },
+                        "state": {
+                            "descriptor": {
+                                "code": $$.cancelBecknOrderResult.state ? $$.cancelBecknOrderResult.state : $$.becknOrder.state
+                            },
+                            "updated_at": $now()
+                        }
+                    },
+                    "quote":{
+                        "price":$formatPrice($order.totalWithTax,$order.currencyCode),
+                        "breakup":[
+                            {
+                                "title":"base-price",
+                                "price": $formatPrice($order.subTotal,$order.currencyCode)
+                            },
+                            {
+                                "title": "shipping",
+                                "price": $formatPrice($order.shipping,$order.currencyCode)
+                            },
+                            {
+                                "title":"taxes",
+                                "price": $formatPrice($order.totalWithTax-$order.total,$order.currencyCode)
+                            }
+                        ]
+                    },
+                    "billing":{
+                        "name":$billing.fullName,
+                        "phone": $billing.phoneNumber,
+                        "email": $customer.emailAddress,
+                        "address": $billing.streetLine1,
+                        "city": {
+                            "name":$billing.city
+                        },
+                        "state":{
+                            "name":$billing.province
+                        }
+                    },
+                    "payments": [
+                        {
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": $paymentDetails.paymentAmount,
+                                "currency": $paymentDetails.paymentCurrencyCode,
+                                "transaction_id": $paymentDetails.paymentTransactionId ?  $paymentDetails.paymentTransactionId : ""
+                            },
+                            "time":{
+                                "label": "Transaction timestamp",
+                                "timestamp": $paymentDetails.paymentTime ? $paymentDetails.paymentTime : $now()
+                            }
+                        }
+                    ],
+                    "tags":[
+                        {
+                            "descriptor":{
+                                "name":"Shipping method details",
+                                "code":"ShippingMethodDetails"
+                            },
+                            "list":$order.shippingLines[].{
+                                "descriptor":{
+                                    "name":$.shippingMethod.name,
+                                    "code": $.shippingMethod.code
+                                },
+                                "value": $.shippingMethod.code
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+)

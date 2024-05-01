@@ -1,0 +1,6 @@
+(
+    $order := becknRequest.body.message.order;
+    {
+        "vendureAuthToken":$order.id
+    }
+)

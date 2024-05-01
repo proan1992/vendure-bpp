@@ -1,0 +1,16 @@
+(
+    $context := becknRequest.body.context;
+    $env := env;
+    $order := becknOrder;
+    $fulfillment := $order.fulfillments[-1];
+    {
+        "headers":{
+            "Content-Type": "application/json"
+        },
+        "body":{    
+            "context":becknResponseContext,
+            "message": {
+            }
+        }
+    }
+)

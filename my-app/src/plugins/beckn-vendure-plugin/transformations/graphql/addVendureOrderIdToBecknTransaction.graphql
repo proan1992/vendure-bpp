@@ -1,0 +1,19 @@
+mutation AddVendureOrderIdToBecknTransaction(
+    $vendureAuthToken: String!
+    $vendureOrderId: String!
+    $vendureToken: String!
+) {
+    addVendureOrderIdToBecknTransaction(
+        vendureAuthToken: $vendureAuthToken
+        vendureOrderId: $vendureOrderId
+        vendureToken: $vendureToken
+    ) {
+        id
+        createdAt
+        updatedAt
+        becknTransactionId
+        vendureAuthToken
+        vendureOrderId
+        vendureToken
+    }
+}

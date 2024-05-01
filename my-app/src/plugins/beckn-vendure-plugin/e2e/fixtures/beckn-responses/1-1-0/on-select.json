@@ -1,0 +1,150 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "context": {
+            "domain": "retail:1.1.0",
+            "location": {
+                "country": {
+                    "code": "IND"
+                },
+                "city": {
+                    "code": "std:080"
+                }
+            },
+            "action": "on_select",
+            "version": "1.1.0",
+            "bap_id": "ps-bap-network.becknprotocol.io",
+            "bap_uri": "https://ps-bap-network.becknprotocol.io/",
+            "bpp_id": "vbabu.lr.bpp.1",
+            "bpp_uri": "https://vbabu-lr-bpp.loca.lt",
+            "message_id": "6d098f3a-4873-4b2e-935e-e4d6be921102",
+            "transaction_id": "8100d125-76a7-4588-88be-81b976572102",
+            "timestamp": "2024-01-21T05:37:30.966Z",
+            "ttl": "PT10M"
+        },
+        "message": {
+            "order": {
+                "id": "760e3f53b2c992e0e16c67cd3b1b0b8dca9f8ce8623774ce8ac34532bc4373d0",
+                "provider": {
+                    "id": "2p0aliran34hu8i6cr7y",
+                    "descriptor": {
+                        "name": "Default Seller",
+                        "short_desc": "Marketplace for agricultural products in Kenya",
+                        "long_desc": "Marketplace to Buy and Sell Agricultural Products and Services in Kenya"
+                    },
+                    "tags": [
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "name": "Additional Details",
+                                "code": "additional_details",
+                                "short_desc": "Additional details about seller"
+                            },
+                            "list": []
+                        }
+                    ]
+                },
+                "fulfillments": [
+                    { "id": "4", "type": "standard" },
+                    { "id": "1", "type": "standard-shipping" },
+                    { "id": "2", "type": "express-shipping" }
+                ],
+                "items": [
+                    {
+                        "id": "69",
+                        "descriptor": {
+                            "name": "Hanging Plant",
+                            "long_desc": "Can be found in tropical and sub-tropical America where it grows on the branches of trees, but also on telephone wires and electricity cables and poles that sometimes topple with the weight of these plants. This plant loves a moist and warm air.",
+                            "images": [
+                                {
+                                    "url": "http://localhost:3000/assets/source/ff/alex-rodriguez-santibanez-200278-unsplash.jpg"
+                                }
+                            ]
+                        },
+                        "price": {
+                            "listed_value": "19.95",
+                            "currency": "USD",
+                            "value": "19.95"
+                        },
+                        "quantity": {
+                            "selected": {
+                                "count": 2
+                            }
+                        },
+                        "fulfillment_ids": ["1", "2", "4"]
+                    },
+                    {
+                        "id": "70",
+                        "descriptor": {
+                            "name": "Aloe Vera",
+                            "long_desc": "Decorative Aloe vera makes a lovely house plant. A really trendy plant, Aloe vera is just so easy to care for. Aloe vera sap has been renowned for its remarkable medicinal and cosmetic properties for many centuries and has been used to treat grazes, insect bites and sunburn - it really works.",
+                            "images": [
+                                {
+                                    "url": "http://localhost:3000/assets/source/d5/silvia-agrasar-227575-unsplash.jpg"
+                                }
+                            ]
+                        },
+                        "price": {
+                            "listed_value": "6.99",
+                            "currency": "USD",
+                            "value": "6.99"
+                        },
+                        "quantity": {
+                            "selected": {
+                                "count": 1
+                            }
+                        },
+                        "fulfillment_ids": ["1", "2", "4"]
+                    }
+                ],
+                "quote": {
+                    "price": {
+                        "currency": "USD",
+                        "value": "56.27"
+                    },
+                    "breakup": [
+                        {
+                            "title": "base-price",
+                            "price": {
+                                "currency": "USD",
+                                "value": "46.89"
+                            }
+                        },
+                        {
+                            "title": "taxes",
+                            "price": {
+                                "currency": "USD",
+                                "value": "9.38"
+                            }
+                        }
+                    ]
+                },
+                "type": "DEFAULT",
+                "tags": [
+                    {
+                        "descriptor": { "name": "Shipping method details", "code": "ShippingMethodDetails" },
+                        "list": [
+                            {
+                                "descriptor": {
+                                    "name": "Standard",
+                                    "code": "standard"
+                                },
+                                "value": "standard"
+                            },
+                            {
+                                "descriptor": { "name": "Standard Shipping", "code": "standard-shipping" },
+                                "value": "standard-shipping"
+                            },
+                            {
+                                "descriptor": { "name": "Express Shipping", "code": "express-shipping" },
+                                "value": "express-shipping"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

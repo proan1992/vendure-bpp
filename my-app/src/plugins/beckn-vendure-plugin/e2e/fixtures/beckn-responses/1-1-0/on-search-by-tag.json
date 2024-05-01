@@ -1,0 +1,110 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "context": {
+            "domain": "retail:1.1.0",
+            "location": {
+                "country": {
+                    "code": "IND"
+                },
+                "city": {
+                    "code": "std:080"
+                }
+            },
+            "action": "on_search",
+            "version": "1.1.0",
+            "bap_id": "ps-bap-network.becknprotocol.io",
+            "bap_uri": "https://ps-bap-network.becknprotocol.io/",
+            "transaction_id": "8100d125-76a7-4588-88be-81b976571107",
+            "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf72101",
+            "timestamp": "2023-11-06T09:41:09.673Z",
+            "bpp_id": "vbabu.lr.bpp.1",
+            "bpp_uri": "https://vbabu-lr-bpp.loca.lt"
+        },
+        "message": {
+            "catalog": {
+                "descriptor": {
+                    "name": "Vendure Shop Catalog"
+                },
+                "providers": [
+                    {
+                        "id": "nandi-coffee",
+                        "descriptor": {
+                            "name": "Nandi Coffee"
+                        },
+                        "categories": [
+                            { "id": "51", "descriptor": { "code": "grocery", "name": "Grocery" } }
+                        ],
+                        "items": [
+                            {
+                                "price": {
+                                    "listed_value": "10.00",
+                                    "currency": "USD",
+                                    "value": "10.00"
+                                },
+                                "id": "89",
+                                "category_ids": ["51"],
+                                "descriptor": {
+                                    "name": "Kabunyeria",
+                                    "long_desc": "<p>Green unroasted fruity flavoured coffee from the Nandi county of Kenya</p>",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/9d/coffee__preview.jpeg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "species",
+                                                    "code": "species"
+                                                },
+                                                "value": "Arabica"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "county",
+                                                    "code": "county"
+                                                },
+                                                "value": "Nandi"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category-2"
+                                                },
+                                                "value": "Grocery"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "quantity": {
+                                    "unitized": {
+                                        "measure": {
+                                            "value": "1",
+                                            "unit": "lbs"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

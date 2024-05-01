@@ -1,0 +1,288 @@
+(
+    $formatMoney := function($value){
+        $string($formatNumber($value/100,"#0.00"))
+    };
+    $formatPrice := function($price,$currencyCode){
+        {
+            "currency":$currencyCode,
+            "value":$formatMoney($price)
+        }
+    };
+    $shippingFulfillments:= function (){(
+        $default_fulfillment := {
+            "id": $shippingMethodId,
+            "type": $shippingMethodCode,
+            "stops":[
+                {
+                    "location": $shippingAddress.city or $shippingAddress.province or $shippingAddress.postalCode ? {
+                        "address": $shippingAddress.streetLine1 & ' ' & ($shippingAddress.streetLine2 ? $shippingAddress.streetLine2 : ''),
+                        "city":{
+                            "name": $shippingAddress.city
+                        },
+                        "state":{
+                            "name": $shippingAddress.province
+                        },
+                        "country":{
+                            "code": $shippingAddress.countryCode
+                        },
+                        "area_code": $shippingAddress.postalCode
+                    } : {},
+                    "contact":{
+                        "name": $shippingAddress.fullName ? $shippingAddress.fullName : $customer.firstName & ' ' & $customer.lastName,
+                        "phone": $shippingAddress.phoneNumber ? $shippingAddress.phoneNumber : $customer.phoneNumber,
+                        "email": $customer.emailAddress
+                    }
+                }
+            ],
+            "customer": {
+                "person": {
+                    "name": $customer.firstName & ' ' & $customer.lastName
+                },
+                "contact": {
+                    "phone": $customer.phoneNumber
+                }
+            }
+        };
+        $exists($fulfillments) and $boolean($fulfillments) ? 
+            $fulfillments[].(
+                $merge([$default_fulfillment,
+                {
+                    "state": {
+                        "descriptor": {
+                            "code": $.state
+                        },
+                        "updated_at": $.updatedAt
+                    }
+                }]))
+            : [$default_fulfillment]
+    )};
+    $digitalFulfillments := function(){(
+        /* assumes only one relevant fulfillment. Picks latest*/
+        $fulfillment := $fulfillments[-1];
+        $customFields := $fulfillment.customFields;
+        $urls := $customFields.downloadUrls;
+        $titles := $customFields.titles;
+        $descriptions := $customFields.descriptions;
+        $durations := $customFields.durations;
+        $statuses := $customFields.statuses;
+
+        $map($urls,function($v,$i){
+            {
+                "id": $urls[$i],
+                "type": $shippingMethodCode,
+                "state":{
+                    "descriptor":{
+                        "code": $statuses[$i]
+                    }
+                },
+                "stops":[
+                    {
+                        "time": {
+                            "label": "duration",
+                            "duration": $durations[$i]
+                        },
+                        "instructions":{
+                            "name": $titles[$i],
+                            "short_desc": $descriptions[$i],
+                            "media":[{
+                                "url": $urls[$i]
+                            }]
+                        }
+                    }
+                ]
+            }
+        })
+    )};
+    $courseCompleted := function(){
+        $exists(becknOrder.fulfillments.customFields.statuses) and (
+            $count(becknOrder.fulfillments.customFields.statuses) = $count(becknOrder.fulfillments.customFields.statuses[$="delivered"])
+        )
+    };
+
+    $context := becknRequest.body.context;
+    $message := becknRequest.body.message;
+    $env := env;
+    $order := becknOrder;
+    $items := $order.lines;
+    $customer := $order.customer;
+    $billing := $order.billingAddress;
+    $paymentDetails:= $order.customFields;
+    $shippingAddress := $order.shippingAddress;
+    $currentChannel:= currentSellerResponse.body.data.activeChannel;
+    $currentSeller:= $currentChannel.seller;
+    $fulfillments := $order.fulfillments;
+    $digitalFulfillmentUrls:=$order.fulfillments.customFields.downloadUrls;   
+    $isDigitalFulfillment:= $exists($digitalFulfillmentUrls) and $boolean($digitalFulfillmentUrls); 
+    $shippingMethodCode := $order.shippingLines.shippingMethod.code;
+    $shippingMethodId := $order.shippingLines.shippingMethod.id;
+    $finalFulfillments := $isDigitalFulfillment ? $digitalFulfillments()[] : $shippingFulfillments();
+    
+    {
+        "headers":{
+            "Content-Type": "application/json"
+        },
+        "body":{    
+            "context":becknResponseContext,
+            "message": {
+                "order": {
+                    "id": getBecknOrderInput.becknOrderId,
+                    "status": $order.state="Cancelled" ? "CANCELLED" : ($order.state="Delivered" ? "COMPLETE" : "ACTIVE"),
+                    "provider":{
+                        "id": $currentChannel.token,
+                        "descriptor": {
+                            "name": $currentSeller.name,
+                            "short_desc": $currentSeller.customFields.shortDescription ? $currentSeller.customFields.shortDescription : "",
+                            "long_desc": $currentSeller.customFields.longDescription ? $currentSeller.customFields.longDescription : "",
+                            "images":$currentSeller.customFields.images[].{
+                                "url":$.source
+                            }
+                        },
+                        "tags":[
+                            {
+                                "display":true,
+                                "descriptor":{
+                                    "name":"Additional Details",
+                                    "code":"additional_details",
+                                    "short_desc": "Additional details about seller"
+                                },
+                                "list":[
+                                    $currentSeller.customFields.address ? {
+                                        "descriptor":{
+                                            "name": "Address",
+                                            "code": "address",
+                                            "short_desc": "Address of Seller"
+                                        },
+                                        "display":true,
+                                        "value": $currentSeller.customFields.address
+                                    }
+                                    ,
+                                    $currentSeller.customFields.taxId ? {
+                                        "descriptor":{
+                                            "name": "Tax ID",
+                                            "code": "tax_id",
+                                            "short_desc": "Tax identifier of Seller"
+                                        },
+                                        "display":true,
+                                        "value": $currentSeller.customFields.taxId
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "items": $items[].{
+                        "id":$.productVariant.id,
+                        "descriptor":{
+                            "name":$.productVariant.name,
+                            "long_desc":$.productVariant.product.description,
+                            "images": ($.productVariant.assets ? $.productVariant.assets : $.productVariant.product.assets)[].{
+                                "url": source
+                            }
+                        },
+                        "price":(
+                            $price := $formatMoney($.unitPrice);
+                            {
+                            "listed_value": $price,
+                            "currency": $order.currencyCode,
+                            "value": $price
+                        }),
+                        "quantity":{
+                            "selected":{
+                                "count": $.quantity
+                            }
+                        },
+                        "fulfillment_ids": $sort($finalFulfillments[].id)
+                    },
+                    "fulfillments": $finalFulfillments,
+                    "quote":{
+                        "price":$formatPrice($order.totalWithTax,$order.currencyCode),
+                        "breakup":[
+                            {
+                                "title":"base-price",
+                                "price": $formatPrice($order.subTotal,$order.currencyCode)
+                            },
+                            {
+                                "title": "shipping",
+                                "price": $formatPrice($order.shipping,$order.currencyCode)
+                            },
+                            {
+                                "title":"taxes",
+                                "price": $formatPrice($order.totalWithTax-$order.total,$order.currencyCode)
+                            }
+                        ]
+                    },
+                    "billing":{
+                        "name":$billing.fullName,
+                        "phone": $billing.phoneNumber,
+                        "email": $customer.emailAddress,
+                        "address": $billing.streetLine1,
+                        "city": {
+                            "name":$billing.city
+                        },
+                        "state":{
+                            "name":$billing.province
+                        }
+                    },
+                    "payments": [
+                        {
+                            "type": "PRE-FULFILLMENT",
+                            "params": {
+                                "amount": $paymentDetails.paymentAmount,
+                                "currency": $paymentDetails.paymentCurrencyCode,
+                                "transaction_id": $paymentDetails.paymentTransactionId ?  $paymentDetails.paymentTransactionId : ""
+                            },
+                            "time":{
+                                "label": "Transaction timestamp",
+                                "timestamp": $paymentDetails.paymentTime ? $paymentDetails.paymentTime : $now()
+                            }
+                        }
+                    ],
+                    "tags":[
+                        {
+                            "descriptor":{
+                                "name":"Shipping method details",
+                                "code":"ShippingMethodDetails"
+                            },
+                            "list":$order.shippingLines[].{
+                                "descriptor":{
+                                    "name":$.shippingMethod.name,
+                                    "code": $.shippingMethod.code
+                                },
+                                "value": $.shippingMethod.code
+                            }
+                        },
+                        {
+                            "descriptor":{
+                                "name":"Additional status",
+                                "code":"AdditionalStatus"
+                            },
+                            "list":[
+                                {
+                                    "descriptor":{
+                                        "name":"Detailed Order Status",
+                                        "code":"detailedOrderStatus"
+                                    },
+                                    "value": $order.state
+                                }
+                            ]
+                        },
+                        $courseCompleted() ? {
+                            "descriptor":{
+                                "name":"Course Completion Details",
+                                "code":"course-completion-details"
+                            },
+                            "list":[
+                                {
+                                    "descriptor":{
+                                        "name":"Course certificate",
+                                        "code":"course-certificate"
+                                    },
+                                    "value": becknOrder.customFields.certificate
+                                }
+                            ]
+                        } 
+                    ]
+                }
+            }
+        }
+    }
+)

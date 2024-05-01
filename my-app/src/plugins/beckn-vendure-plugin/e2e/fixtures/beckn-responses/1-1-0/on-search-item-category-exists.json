@@ -1,0 +1,142 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "context": {
+            "domain": "retail:1.1.0",
+            "location": {
+                "country": {
+                    "code": "IND"
+                },
+                "city": {
+                    "code": "std:080"
+                }
+            },
+            "action": "on_search",
+            "version": "1.1.0",
+            "bap_id": "ps-bap-network.becknprotocol.io",
+            "bap_uri": "https://ps-bap-network.becknprotocol.io/",
+            "transaction_id": "8100d125-76a7-4588-88be-81b976571103",
+            "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf72101",
+            "timestamp": "2023-11-06T09:41:09.673Z",
+            "bpp_id": "vbabu.lr.bpp.1",
+            "bpp_uri": "https://vbabu-lr-bpp.loca.lt"
+        },
+        "message": {
+            "catalog": {
+                "descriptor": {
+                    "name": "Vendure Shop Catalog"
+                },
+                "providers": [
+                    {
+                        "id": "2p0aliran34hu8i6cr7y",
+                        "descriptor": {
+                            "name": "Default Seller"
+                        },
+                        "categories": [
+                            { "id": "30", "descriptor": { "code": "home-garden", "name": "Home & Garden" } },
+                            { "id": "31", "descriptor": { "code": "plants", "name": "Plants" } }
+                        ],
+                        "items": [
+                            {
+                                "price": {
+                                    "listed_value": "19.95",
+                                    "currency": "USD",
+                                    "value": "19.95"
+                                },
+                                "id": "69",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Hanging Plant",
+                                    "long_desc": "Can be found in tropical and sub-tropical America where it grows on the branches of trees, but also on telephone wires and electricity cables and poles that sometimes topple with the weight of these plants. This plant loves a moist and warm air.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/5b/alex-rodriguez-santibanez-200278-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Outdoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "6.99",
+                                    "currency": "USD",
+                                    "value": "6.99"
+                                },
+                                "id": "70",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Aloe Vera",
+                                    "long_desc": "Decorative Aloe vera makes a lovely house plant. A really trendy plant, Aloe vera is just so easy to care for. Aloe vera sap has been renowned for its remarkable medicinal and cosmetic properties for many centuries and has been used to treat grazes, insect bites and sunburn - it really works.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/29/silvia-agrasar-227575-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Indoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

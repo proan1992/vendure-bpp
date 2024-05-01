@@ -1,0 +1,191 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "context": {
+            "domain": "retail:1.1.0",
+            "location": {
+                "country": {
+                    "code": "IND"
+                },
+                "city": {
+                    "code": "std:080"
+                }
+            },
+            "action": "on_init",
+            "version": "1.1.0",
+            "bap_id": "ps-bap-network.becknprotocol.io",
+            "bap_uri": "https://ps-bap-network.becknprotocol.io/",
+            "bpp_id": "vbabu.lr.bpp.1",
+            "bpp_uri": "https://vbabu-lr-bpp.loca.lt",
+            "transaction_id": "8100d125-76a7-4588-88be-81b976572304",
+            "message_id": "06f49c01-65b7-4754-8b37-ab4e33682203",
+            "timestamp": "2024-01-26T09:45:40.407Z"
+        },
+        "message": {
+            "order": {
+                "id": "7ae1227ce09e1e853cc786900ab9fbc2af0c0770e74f076b7fd9fef6be883d14",
+                "provider": {
+                    "id": "meru-coffee",
+                    "descriptor": {
+                        "name": "Meru Coffee",
+                        "short_desc": "Premium coffee growers from the county of Meru",
+                        "long_desc": "From Meru county in Central Kenya comes a premium coffee plantation called Meru Coffee. We grow premium varieties of Robusta and Arabica seeds.",
+                        "images": [
+                            {
+                                "url": "http://localhost:3000/assets/source/8f/meru.png"
+                            }
+                        ]
+                    },
+                    "tags": [
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "name": "Additional Details",
+                                "code": "additional_details",
+                                "short_desc": "Additional details about seller"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Address",
+                                        "code": "address",
+                                        "short_desc": "Address of Seller"
+                                    },
+                                    "display": true,
+                                    "value": "P.O. Box 100-60200, Meru, Keny"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Tax ID",
+                                        "code": "tax_id",
+                                        "short_desc": "Tax identifier of Seller"
+                                    },
+                                    "display": true,
+                                    "value": "KEN-TAX-002"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "items": [
+                    {
+                        "id": "93",
+                        "descriptor": {
+                            "name": "Coffee plant care",
+                            "long_desc": "<p>Course on taking care of coffee plants</p>",
+                            "images": [
+                                {
+                                    "url": "http://localhost:3000/assets/source/85/coffee_plant_care.jpg"
+                                }
+                            ]
+                        },
+                        "price": {
+                            "listed_value": "0.00",
+                            "currency": "USD",
+                            "value": "0.00"
+                        },
+                        "quantity": {
+                            "selected": {
+                                "count": 1
+                            }
+                        },
+                        "fulfillment_ids": ["3"]
+                    }
+                ],
+                "fulfillments": [
+                    {
+                        "id": "3",
+                        "type": "digital-fulfillment",
+                        "customer": {
+                            "person": {
+                                "name": "Motiur Rehman"
+                            },
+                            "contact": {
+                                "phone": "919122343344"
+                            }
+                        }
+                    }
+                ],
+                "quote": {
+                    "price": {
+                        "currency": "USD",
+                        "value": "0.00"
+                    },
+                    "breakup": [
+                        {
+                            "title": "base-price",
+                            "price": {
+                                "currency": "USD",
+                                "value": "0.00"
+                            }
+                        },
+                        {
+                            "title": "shipping",
+                            "price": {
+                                "currency": "USD",
+                                "value": "0.00"
+                            }
+                        },
+                        {
+                            "title": "taxes",
+                            "price": {
+                                "currency": "USD",
+                                "value": "0.00"
+                            }
+                        }
+                    ]
+                },
+                "billing": {
+                    "name": "Motiur Rehman",
+                    "phone": "9191223433",
+                    "email": "nc.rehman@gmail.com",
+                    "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+                    "city": {
+                        "name": "Gangamuthanahalli"
+                    },
+                    "state": {
+                        "name": "Karnataka"
+                    }
+                },
+                "payments": [
+                    {
+                        "id": "2",
+                        "name": "Standard Payment",
+                        "status": "NOT-PAID",
+                        "type": "PRE-FULFILLMENT",
+                        "params": {
+                            "amount": "0.00",
+                            "currency": "USD"
+                        }
+                    }
+                ],
+                "tags": [
+                    {
+                        "descriptor": {
+                            "name": "Shipping method details",
+                            "code": "ShippingMethodDetails"
+                        },
+                        "list": [
+                            {
+                                "descriptor": {
+                                    "name": "Digital Fulfillment",
+                                    "code": "digital-fulfillment"
+                                },
+                                "value": "digital-fulfillment"
+                            },
+                            {
+                                "descriptor": {
+                                    "name": "Standard",
+                                    "code": "standard"
+                                },
+                                "value": "standard"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

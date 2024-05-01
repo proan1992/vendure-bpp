@@ -1,0 +1,584 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "context": {
+            "domain": "retail:1.1.0",
+            "location": {
+                "country": {
+                    "code": "IND"
+                },
+                "city": {
+                    "code": "std:080"
+                }
+            },
+            "action": "on_search",
+            "version": "1.1.0",
+            "bap_id": "ps-bap-network.becknprotocol.io",
+            "bap_uri": "https://ps-bap-network.becknprotocol.io/",
+            "transaction_id": "8100d125-76a7-4588-88be-81b976571102",
+            "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf72101",
+            "timestamp": "2023-11-06T09:41:09.673Z",
+            "bpp_id": "vbabu.lr.bpp.1",
+            "bpp_uri": "https://vbabu-lr-bpp.loca.lt"
+        },
+        "message": {
+            "catalog": {
+                "descriptor": {
+                    "name": "Vendure Shop Catalog"
+                },
+                "providers": [
+                    {
+                        "id": "2p0aliran34hu8i6cr7y",
+                        "descriptor": {
+                            "name": "Default Seller"
+                        },
+                        "categories": [
+                            { "id": "30", "descriptor": { "code": "home-garden", "name": "Home & Garden" } },
+                            { "id": "31", "descriptor": { "code": "plants", "name": "Plants" } }
+                        ],
+                        "items": [
+                            {
+                                "price": {
+                                    "listed_value": "15.50",
+                                    "currency": "USD",
+                                    "value": "15.50"
+                                },
+                                "id": "67",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Spiky Cactus",
+                                    "long_desc": "A spiky yet elegant house cactus - perfect for the home or office. Origin and habitat: Probably native only to the Andes of Peru",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/78/charles-deluvio-695736-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Indoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "6.75",
+                                    "currency": "USD",
+                                    "value": "6.75"
+                                },
+                                "id": "68",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Tulip Pot",
+                                    "long_desc": "Bright crimson red species tulip with black centers, the poppy-like flowers will open up in full sun. Ideal for rock gardens, pots and border edging.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/14/natalia-y-345738-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Indoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "19.95",
+                                    "currency": "USD",
+                                    "value": "19.95"
+                                },
+                                "id": "69",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Hanging Plant",
+                                    "long_desc": "Can be found in tropical and sub-tropical America where it grows on the branches of trees, but also on telephone wires and electricity cables and poles that sometimes topple with the weight of these plants. This plant loves a moist and warm air.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/5b/alex-rodriguez-santibanez-200278-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Outdoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "6.99",
+                                    "currency": "USD",
+                                    "value": "6.99"
+                                },
+                                "id": "70",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Aloe Vera",
+                                    "long_desc": "Decorative Aloe vera makes a lovely house plant. A really trendy plant, Aloe vera is just so easy to care for. Aloe vera sap has been renowned for its remarkable medicinal and cosmetic properties for many centuries and has been used to treat grazes, insect bites and sunburn - it really works.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/29/silvia-agrasar-227575-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Indoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "8.95",
+                                    "currency": "USD",
+                                    "value": "8.95"
+                                },
+                                "id": "71",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Fern Blechnum Gibbum",
+                                    "long_desc": "Create a tropical feel in your home with this lush green tree fern, it has decorative leaves and will develop a short slender trunk in time.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/6d/caleb-george-536388-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Outdoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "32.50",
+                                    "currency": "USD",
+                                    "value": "32.50"
+                                },
+                                "id": "72",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Assorted Indoor Succulents",
+                                    "long_desc": "These assorted succulents come in a variety of different shapes and colours - each with their own unique personality. Succulents grow best in plenty of light: a sunny windowsill would be the ideal spot for them to thrive!",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/81/annie-spratt-78044-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "plant type",
+                                                    "code": "plant-type"
+                                                },
+                                                "value": "Indoor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "65.00",
+                                    "currency": "USD",
+                                    "value": "65.00"
+                                },
+                                "id": "73",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Orchid",
+                                    "long_desc": "Gloriously elegant. It can go along with any interior as it is a neutral color and the most popular Phalaenopsis overall. 2 to 3 foot stems host large white flowers that can last for over 2 months.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/88/zoltan-kovacs-642412-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "19.99",
+                                    "currency": "USD",
+                                    "value": "19.99"
+                                },
+                                "id": "74",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Bonsai Tree",
+                                    "long_desc": "Excellent semi-evergreen bonsai. Indoors or out but needs some winter protection. All trees sent will leave the nursery in excellent condition and will be of equal quality or better than the photograph shown.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/f3/mark-tegethoff-667351-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "price": {
+                                    "listed_value": "4.99",
+                                    "currency": "USD",
+                                    "value": "4.99"
+                                },
+                                "id": "76",
+                                "category_ids": ["30", "31"],
+                                "descriptor": {
+                                    "name": "Hand Trowel",
+                                    "long_desc": "Hand trowel for garden cultivating hammer finish epoxy-coated head for improved resistance to rust, scratches, humidity and alkalines in the soil.",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/7d/neslihan-gunaydin-3493-unsplash__preview.jpg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category"
+                                                },
+                                                "value": "Home & Garden"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "nandi-coffee",
+                        "descriptor": {
+                            "name": "Nandi Coffee"
+                        },
+                        "categories": [{ "id": "52", "descriptor": { "code": "plants", "name": "Plants" } }],
+                        "items": [
+                            {
+                                "price": {
+                                    "listed_value": "5.00",
+                                    "currency": "USD",
+                                    "value": "5.00"
+                                },
+                                "id": "90",
+                                "category_ids": ["52"],
+                                "descriptor": {
+                                    "name": "Chepsangor Coffee Saplings",
+                                    "long_desc": "<p>Native Coffee Saplings from the hills of Cepsangor in Nandi country</p>",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/e5/coffee-sapling__preview.jpeg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "county",
+                                                    "code": "county"
+                                                },
+                                                "value": "Nandi"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category-2"
+                                                },
+                                                "value": "Plants"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "rating": "3.8",
+                                "quantity": {
+                                    "unitized": {
+                                        "measure": {
+                                            "value": "10",
+                                            "unit": "nos"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "meru-coffee",
+                        "descriptor": {
+                            "name": "Meru Coffee"
+                        },
+                        "categories": [{ "id": "47", "descriptor": { "code": "plants", "name": "Plants" } }],
+                        "items": [
+                            {
+                                "price": {
+                                    "listed_value": "5.00",
+                                    "currency": "USD",
+                                    "value": "5.00"
+                                },
+                                "id": "92",
+                                "category_ids": ["47"],
+                                "descriptor": {
+                                    "name": "Arabica Seedlings",
+                                    "long_desc": "<p>Arabica seedlings from the Meru county</p>",
+                                    "images": [
+                                        {
+                                            "url": "http://localhost:3000/assets/preview/d2/meru_seedlings__preview.jpeg"
+                                        }
+                                    ]
+                                },
+                                "matched": true,
+                                "tags": [
+                                    {
+                                        "display": true,
+                                        "descriptor": {
+                                            "name": "Facets",
+                                            "code": "facets",
+                                            "short_desc": "Tags in common language, facets within Vendure"
+                                        },
+                                        "list": [
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "category",
+                                                    "code": "category-3"
+                                                },
+                                                "value": "Plants"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "county",
+                                                    "code": "county-2"
+                                                },
+                                                "value": "Meru"
+                                            },
+                                            {
+                                                "display": true,
+                                                "descriptor": {
+                                                    "name": "species",
+                                                    "code": "species-2"
+                                                },
+                                                "value": "Arabica"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "quantity": {
+                                    "unitized": {
+                                        "measure": {
+                                            "value": "10",
+                                            "unit": "nos"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

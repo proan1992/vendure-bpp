@@ -1,0 +1,136 @@
+{
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "body": {
+        "context": {
+            "domain": "retail:1.1.0",
+            "location": {
+                "country": {
+                    "code": "IND"
+                },
+                "city": {
+                    "code": "std:080"
+                }
+            },
+            "action": "on_select",
+            "version": "1.1.0",
+            "bap_id": "ps-bap-network.becknprotocol.io",
+            "bap_uri": "https://ps-bap-network.becknprotocol.io/",
+            "bpp_id": "vbabu.lr.bpp.1",
+            "bpp_uri": "https://vbabu-lr-bpp.loca.lt",
+            "message_id": "04551dd9-30b6-4270-9608-61c315730ad1",
+            "transaction_id": "df5dc215-a91d-4e8b-94ef-e0cf9a2a3af1",
+            "timestamp": "2024-01-21T05:37:30.966Z",
+            "ttl": "PT10M"
+        },
+        "message": {
+            "order": {
+                "id": "760e3f53b2c992e0e16c67cd3b1b0b8dca9f8ce8623774ce8ac34532bc4373d0",
+                "provider": {
+                    "id": "meru-coffee",
+                    "descriptor": {
+                        "name": "Meru Coffee",
+                        "short_desc": "Premium coffee growers from the county of Meru",
+                        "long_desc": "From Meru county in Central Kenya comes a premium coffee plantation called Meru Coffee. We grow premium varieties of Robusta and Arabica seeds.",
+                        "images": [
+                            {
+                                "url": "http://localhost:3000/assets/source/8f/meru.png"
+                            }
+                        ]
+                    },
+                    "tags": [
+                        {
+                            "display": true,
+                            "descriptor": {
+                                "name": "Additional Details",
+                                "code": "additional_details",
+                                "short_desc": "Additional details about seller"
+                            },
+                            "list": [
+                                {
+                                    "descriptor": {
+                                        "name": "Address",
+                                        "code": "address",
+                                        "short_desc": "Address of Seller"
+                                    },
+                                    "display": true,
+                                    "value": "P.O. Box 100-60200, Meru, Keny"
+                                },
+                                {
+                                    "descriptor": {
+                                        "name": "Tax ID",
+                                        "code": "tax_id",
+                                        "short_desc": "Tax identifier of Seller"
+                                    },
+                                    "display": true,
+                                    "value": "KEN-TAX-002"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "fulfillments": [{ "id": "4", "type": "standard" }],
+                "items": [
+                    {
+                        "id": "95",
+                        "descriptor": {
+                            "name": "Tractor Tilling",
+                            "long_desc": "<p>Tilling service using tractor. 3 acre per hour</p>",
+                            "images": [
+                                {
+                                    "url": "http://localhost:3000/assets/source/8d/tractor_tilling.jpg"
+                                }
+                            ]
+                        },
+                        "price": {
+                            "listed_value": "100.00",
+                            "currency": "USD",
+                            "value": "100.00"
+                        },
+                        "quantity": {
+                            "selected": {
+                                "count": 1
+                            }
+                        },
+                        "fulfillment_ids": ["4"]
+                    }
+                ],
+                "quote": {
+                    "price": {
+                        "currency": "USD",
+                        "value": "120.00"
+                    },
+                    "breakup": [
+                        {
+                            "title": "base-price",
+                            "price": {
+                                "currency": "USD",
+                                "value": "100.00"
+                            }
+                        },
+                        {
+                            "title": "taxes",
+                            "price": {
+                                "currency": "USD",
+                                "value": "20.00"
+                            }
+                        }
+                    ]
+                },
+                "type": "DEFAULT",
+                "tags": [
+                    {
+                        "descriptor": { "name": "Shipping method details", "code": "ShippingMethodDetails" },
+                        "list": [
+                            {
+                                "descriptor": { "name": "Standard", "code": "standard" },
+                                "value": "standard"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

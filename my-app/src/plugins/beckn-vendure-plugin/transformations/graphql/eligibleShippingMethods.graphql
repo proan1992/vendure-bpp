@@ -1,0 +1,7 @@
+query EligibleShippingMethods {
+    eligibleShippingMethods {
+        id
+        code
+        name
+    }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:server": "ts-node ./src/index.ts",
+    "dev:worker": "ts-node ./src/index-worker.ts",
+    "dev": "concurrently npm:dev:*",
+    "build": "tsc",
+    "start:server": "node ./dist/index.js",
+    "start:worker": "node ./dist/index-worker.js",
+    "start": "concurrently npm:start:*"
+  },
+  "dependencies": {
+    "@vendure/admin-ui-plugin": "2.2.0",
+    "@vendure/asset-server-plugin": "2.2.0",
+    "@vendure/core": "2.2.0",
+    "@vendure/email-plugin": "2.2.0",
+    "@vendure/testing": "^2.2.0",
+    "better-sqlite3": "9.5.0",
+    "dotenv": "16.4.5",
+    "msw": "^2.2.14",
+    "typescript": "5.3.3",
+    "unplugin-swc": "^1.4.5",
+    "vite": "^5.2.10",
+    "vitest": "^1.5.0"
+  },
+  "devDependencies": {
+    "@vendure/cli": "2.2.0",
+    "@vendure/ui-devkit": "^2.2.0",
+    "concurrently": "8.2.2"
+  }
+}

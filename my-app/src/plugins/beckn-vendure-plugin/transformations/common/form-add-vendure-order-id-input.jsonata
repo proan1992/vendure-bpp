@@ -1,0 +1,5 @@
+{
+    "vendureAuthToken": vendureAuthToken,
+    "vendureOrderId": currentOrderResponse.activeOrder.id,
+    "vendureToken":currentSellerResponse.body.data.activeChannel.token
+}
